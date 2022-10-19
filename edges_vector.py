@@ -150,6 +150,7 @@ def make_edges_vector(arrays):
         df_vertex = pd.DataFrame(columns=['id', 'x', 'y'])
         idx = 0
         vertex_lsts = []
+        pixel_color = 50
 
         for x in tqdm(range(arrays[0].shape[0])):
 
@@ -159,10 +160,10 @@ def make_edges_vector(arrays):
                 if x == 0 and y<=arrays[0].shape[1]-2:
 
                     # 바다
-                    if arrays[0][x,y] > 200:
+                    if arrays[0][x,y] > pixel_color:
 
                         # 오른쪽 로드 확인
-                        if arrays[0][x, y+1] > 200:
+                        if arrays[0][x, y+1] > pixel_color:
 
                             cost = 1
                             reverse_cost = 1
@@ -204,13 +205,13 @@ def make_edges_vector(arrays):
                 elif x > 0:
 
                     # 바다
-                    if arrays[0][x, y] > 200:
+                    if arrays[0][x, y] > pixel_color:
 
                         # 마지막 열인지 확인
                         if y == arrays[0].shape[1] - 1:
 
                             # 위쪽 확인 바다
-                            if arrays[0][x - 1, y] > 200:
+                            if arrays[0][x - 1, y] > pixel_color:
                                 cost = 1
                                 reverse_cost = 1
                                 x1=x
@@ -236,7 +237,7 @@ def make_edges_vector(arrays):
                         # 마지막 열이 아님
                         else:
                             # 오른쪽 확인 바다
-                            if arrays[0][x, y + 1] > 200:
+                            if arrays[0][x, y + 1] > pixel_color:
 
                                 cost = 1
                                 reverse_cost = 1
@@ -262,7 +263,7 @@ def make_edges_vector(arrays):
                                 idx += 1
 
                             # 위쪽 확인 바다
-                            if arrays[0][x-1, y] > 200:
+                            if arrays[0][x-1, y] > pixel_color:
 
                                 cost = 1
                                 reverse_cost = 1
@@ -291,7 +292,7 @@ def make_edges_vector(arrays):
                         # 마지막 열인지 확인 위쪽 로드만 확인
                         if y == arrays[0].shape[1] - 1:
                             # 위쪽 로드만 확인
-                            if arrays[0][x - 1, y] > 200:
+                            if arrays[0][x - 1, y] > pixel_color:
 
                                 cost = -1
                                 reverse_cost = 1
@@ -306,7 +307,7 @@ def make_edges_vector(arrays):
                         # 마지막 행의 열로드가 아니면
                         else:
                             # 오른쪽 로드 확인 바다
-                            if arrays[0][x, y+1] > 200:
+                            if arrays[0][x, y+1] > pixel_color:
 
                                 cost = -1
                                 reverse_cost = 1
@@ -319,7 +320,7 @@ def make_edges_vector(arrays):
                                 idx += 1
 
                             # 위쪽 로드 확인 바다
-                            if arrays[0][x-1, y] > 200:
+                            if arrays[0][x-1, y] > pixel_color:
 
                                 cost = -1
                                 reverse_cost = 1
