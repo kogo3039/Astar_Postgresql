@@ -13,7 +13,7 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
         if cost > 0 and reverse_cost > 0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, 1*cost, 1*reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, 4*cost, 4*reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -23,7 +23,7 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
         elif cost>0 and reverse_cost<0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, 1 * cost, reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, 4 * cost, reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -33,7 +33,7 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
         elif cost < 0 and reverse_cost > 0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, cost, 1*reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, cost, 4*reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -44,38 +44,6 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
 
     elif 58 <= x2 < 116 or 350 <= x2 < 408:
-
-        if cost > 0 and reverse_cost > 0:
-
-            df_edges.loc[idx] = [idx, '', 0, 0, 1 * cost, 1 * reverse_cost, x1, y1, x2, y2]
-
-            if [x1, y1] not in vertex_lsts:
-                vertex_lsts.append([x1, y1])
-
-            if [x2, y2] not in vertex_lsts:
-                vertex_lsts.append([x2, y2])
-
-        elif cost > 0 and reverse_cost < 0:
-
-            df_edges.loc[idx] = [idx, '', 0, 0, 1 * cost, reverse_cost, x1, y1, x2, y2]
-
-            if [x1, y1] not in vertex_lsts:
-                vertex_lsts.append([x1, y1])
-
-            if [x2, y2] not in vertex_lsts:
-                vertex_lsts.append([x2, y2])
-
-        elif cost < 0 and reverse_cost > 0:
-
-            df_edges.loc[idx] = [idx, '', 0, 0, cost, 1 * reverse_cost, x1, y1, x2, y2]
-
-            if [x1, y1] not in vertex_lsts:
-                vertex_lsts.append([x1, y1])
-
-            if [x2, y2] not in vertex_lsts:
-                vertex_lsts.append([x2, y2])
-
-    elif 116 <= x2 < 175 or 292 <= x2 < 350:
 
         if cost > 0 and reverse_cost > 0:
 
@@ -107,11 +75,11 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
             if [x2, y2] not in vertex_lsts:
                 vertex_lsts.append([x2, y2])
 
-    elif 175 <= x2 < 292:
+    elif 116 <= x2 < 175 or 292 <= x2 < 350:
 
         if cost > 0 and reverse_cost > 0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, 4 * cost, 4 * reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, 2 * cost, 2 * reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -121,7 +89,7 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
         elif cost > 0 and reverse_cost < 0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, 4 * cost, reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, 2 * cost, reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -131,7 +99,39 @@ def put_cost_reverse_cost(x1, y1, x2, y2,  df_edges, idx, vertex_lsts, cost, rev
 
         elif cost < 0 and reverse_cost > 0:
 
-            df_edges.loc[idx] = [idx, '', 0, 0, cost, 4 * reverse_cost, x1, y1, x2, y2]
+            df_edges.loc[idx] = [idx, '', 0, 0, cost, 2 * reverse_cost, x1, y1, x2, y2]
+
+            if [x1, y1] not in vertex_lsts:
+                vertex_lsts.append([x1, y1])
+
+            if [x2, y2] not in vertex_lsts:
+                vertex_lsts.append([x2, y2])
+
+    elif 175 <= x2 < 292:
+
+        if cost > 0 and reverse_cost > 0:
+
+            df_edges.loc[idx] = [idx, '', 0, 0, 1 * cost, 1 * reverse_cost, x1, y1, x2, y2]
+
+            if [x1, y1] not in vertex_lsts:
+                vertex_lsts.append([x1, y1])
+
+            if [x2, y2] not in vertex_lsts:
+                vertex_lsts.append([x2, y2])
+
+        elif cost > 0 and reverse_cost < 0:
+
+            df_edges.loc[idx] = [idx, '', 0, 0, 1 * cost, reverse_cost, x1, y1, x2, y2]
+
+            if [x1, y1] not in vertex_lsts:
+                vertex_lsts.append([x1, y1])
+
+            if [x2, y2] not in vertex_lsts:
+                vertex_lsts.append([x2, y2])
+
+        elif cost < 0 and reverse_cost > 0:
+
+            df_edges.loc[idx] = [idx, '', 0, 0, cost, 1 * reverse_cost, x1, y1, x2, y2]
 
             if [x1, y1] not in vertex_lsts:
                 vertex_lsts.append([x1, y1])
@@ -189,7 +189,7 @@ def make_edges_vector(arrays):
                     # 육지
                     else:
                         # 바다
-                        if arrays[0][x, y + 1] > 0:
+                        if arrays[0][x, y + 1] > pixel_color:
 
                             cost = -1
                             reverse_cost = 1
